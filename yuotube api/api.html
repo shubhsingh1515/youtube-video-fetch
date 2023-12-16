@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>YouTube Video Player</title>
+
+</head>
+<body>
+    <header>
+        <img src="youtube.png" id="img" alt="Youtube Logo">
+        <div class="logo">YouTube</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div>
+    </header>
+  <div id="player"></div>
+
+  <script>
+    const apiKey = 'AIzaSyDo8lygxWLY2ZK0g2__BZSVClrvhBq8Kao';
+    const videoId = 'uo1UD63d8i8';
+
+    const script = document.createElement('script');
+    script.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(script);
+
+    function onYouTubeIframeAPIReady() {
+      const player = new YT.Player('player', {
+        height: '550',
+        width: '1200',
+        videoId: videoId,
+        playerVars: {
+          'autoplay': 1,
+          'controls': 1,
+          'showinfo': 0,
+          'rel': 0,
+        },
+        events: {
+          'onReady': onPlayerReady,
+        },
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+  </script>
+</body>
+</html>
